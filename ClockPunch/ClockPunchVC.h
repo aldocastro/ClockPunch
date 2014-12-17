@@ -7,7 +7,14 @@
 //
 
 @import UIKit;
+@import CoreLocation;
 
-@interface ClockPunchVC : UITableViewController
+@interface ClockPunchVC : UITableViewController <CLLocationManagerDelegate, UITableViewDataSource, UITableViewDelegate>
+@property (nonatomic, strong) NSMutableArray *clockPunches;
+@property (nonatomic, strong) CLLocationManager *locationManager;
+@property (nonatomic, strong) UIBarButtonItem *addButton; //    TEST purposes
+@end
 
+@interface ClockPunchCell : UITableViewCell
+@property (nonatomic, weak) IBOutlet UILabel *placeName, *clockIn, *clockOut;
 @end
