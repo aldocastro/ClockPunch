@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6E30C8811A4220B0004EB456 /* NSDate+Formatted.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E30C8801A4220B0004EB456 /* NSDate+Formatted.m */; };
+		6E30C8821A4220B0004EB456 /* NSDate+Formatted.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E30C8801A4220B0004EB456 /* NSDate+Formatted.m */; };
 		6E5BDA531A37BE1800421C31 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E5BDA521A37BE1800421C31 /* main.m */; };
 		6E5BDA561A37BE1800421C31 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E5BDA551A37BE1800421C31 /* AppDelegate.m */; };
 		6E5BDA591A37BE1800421C31 /* ClockPunchVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E5BDA581A37BE1800421C31 /* ClockPunchVC.m */; };
@@ -28,6 +30,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6E30C87F1A4220B0004EB456 /* NSDate+Formatted.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Formatted.h"; sourceTree = "<group>"; };
+		6E30C8801A4220B0004EB456 /* NSDate+Formatted.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Formatted.m"; sourceTree = "<group>"; };
 		6E5BDA4D1A37BE1800421C31 /* ClockPunch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ClockPunch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6E5BDA511A37BE1800421C31 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6E5BDA521A37BE1800421C31 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -87,6 +91,8 @@
 			children = (
 				6E5BDA541A37BE1800421C31 /* AppDelegate.h */,
 				6E5BDA551A37BE1800421C31 /* AppDelegate.m */,
+				6E30C87F1A4220B0004EB456 /* NSDate+Formatted.h */,
+				6E30C8801A4220B0004EB456 /* NSDate+Formatted.m */,
 				6E5BDA571A37BE1800421C31 /* ClockPunchVC.h */,
 				6E5BDA581A37BE1800421C31 /* ClockPunchVC.m */,
 				6E5BDA5D1A37BE1800421C31 /* Main.storyboard */,
@@ -228,6 +234,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6E30C8811A4220B0004EB456 /* NSDate+Formatted.m in Sources */,
 				6E5BDA561A37BE1800421C31 /* AppDelegate.m in Sources */,
 				6E5BDA591A37BE1800421C31 /* ClockPunchVC.m in Sources */,
 				6E5BDA531A37BE1800421C31 /* main.m in Sources */,
@@ -239,6 +246,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6E5BDA701A37BE1800421C31 /* ClockPunchTests.m in Sources */,
+				6E30C8821A4220B0004EB456 /* NSDate+Formatted.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
