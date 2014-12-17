@@ -14,6 +14,7 @@
 		6E5BDA611A37BE1800421C31 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6E5BDA601A37BE1800421C31 /* Images.xcassets */; };
 		6E5BDA641A37BE1800421C31 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6E5BDA621A37BE1800421C31 /* LaunchScreen.xib */; };
 		6E5BDA701A37BE1800421C31 /* ClockPunchTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E5BDA6F1A37BE1800421C31 /* ClockPunchTests.m */; };
+		6E5BDA7A1A37BE3900421C31 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E5BDA791A37BE3900421C31 /* CoreLocation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +41,7 @@
 		6E5BDA691A37BE1800421C31 /* ClockPunchTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ClockPunchTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6E5BDA6E1A37BE1800421C31 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6E5BDA6F1A37BE1800421C31 /* ClockPunchTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ClockPunchTests.m; sourceTree = "<group>"; };
+		6E5BDA791A37BE3900421C31 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,6 +49,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6E5BDA7A1A37BE3900421C31 /* CoreLocation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -64,6 +67,7 @@
 			isa = PBXGroup;
 			children = (
 				6E5BDA4F1A37BE1800421C31 /* ClockPunch */,
+				6E5BDA791A37BE3900421C31 /* CoreLocation.framework */,
 				6E5BDA6C1A37BE1800421C31 /* ClockPunchTests */,
 				6E5BDA4E1A37BE1800421C31 /* Products */,
 			);
@@ -168,6 +172,11 @@
 				TargetAttributes = {
 					6E5BDA4C1A37BE1800421C31 = {
 						CreatedOnToolsVersion = 6.1.1;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 					6E5BDA681A37BE1800421C31 = {
 						CreatedOnToolsVersion = 6.1.1;
