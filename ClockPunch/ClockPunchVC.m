@@ -12,6 +12,8 @@
 @import AddressBookUI;
 
 static NSString * const CellIdentifier = @"Cell";
+static NSString * const kLocationRegionIdentifier = @"Unterföhring";
+#define kRegionCoordinates CLLocationCoordinate2DMake(48.191662, 11.646044)
 
 @interface ClockPunch : NSObject
 @property (nonatomic) NSString *place, *clockIn, *clockOut, *date;
@@ -114,7 +116,24 @@ static NSString * const CellIdentifier = @"Cell";
 #pragma mark - Location
 
 - (void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status {
-    [self startLocationUpdates];
+    if (status == kCLAuthorizationStatusDenied) {
+        //  open settings
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Region Monitoring Required"
+                                                                                 message:@"Allow location services in Settings."
+                                                                          preferredStyle:UIAlertControllerStyleAlert];
+        [alertController addAction:[UIAlertAction actionWithTitle:@"Accept" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString]];
+        }]];
+        [alertController addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDefault handler:NULL]];
+        [self presentViewController:alertController animated:YES completion:NULL];
+    } else {
+        CLCircularRegion *region = [[CLCircularRegion alloc] initWithCenter:kRegionCoordinates
+                                                                     radius:500
+                                                                 identifier:kLocationRegionIdentifier];
+        region.notifyOnEntry = YES;
+        region.notifyOnExit = YES;
+        [self.locationManager startMonitoringForRegion:region];
+    }
 }
 
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {
@@ -123,17 +142,19 @@ static NSString * const CellIdentifier = @"Cell";
 }
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
-    [self stopLocationUpdates];
+    NSLog(@"%s", __PRETTY_FUNCTION__);
     [self updateViewWithLocation:locations[0]];
 }
 
-//- (void)locationManager:(CLLocationManager *)manager didVisit:(CLVisit *)visit {
-//    if ([visit.arrivalDate isEqualToDate:[NSDate distantFuture]]) {
-//        //  user arrive but not left yet.
-//    } else {
-//
-//    }
-//}
+- (void)locationManager:(CLLocationManager *)manager didEnterRegion:(CLRegion *)region {
+    NSLog(@"%s", __PRETTY_FUNCTION__);
+    [self insertGeocodedLocation:manager.location];
+}
+
+- (void)locationManager:(CLLocationManager *)manager didExitRegion:(CLRegion *)region {
+    NSLog(@"%s", __PRETTY_FUNCTION__);
+    [self insertCheckoutAtObject:self.clockPunches[0]];
+}
 
 #pragma mark - Helpers
 
@@ -172,6 +193,8 @@ static NSString * const CellIdentifier = @"Cell";
             if (!error && [placemarks count] > 0) {
                 [self insertNewObjectWithAddress:ABCreateStringWithAddressDictionary(((CLPlacemark *)placemarks[0]).addressDictionary, YES)];
             } else {
+                NSString *address = [NSString stringWithFormat:@"Latitude: %f\nLongitude:%f",location.coordinate.latitude, location.coordinate.longitude];
+                [self insertNewObjectWithAddress:address];
                 NSLog(@"decoding string failure: %@", error.debugDescription);
             }
         }];
@@ -184,22 +207,7 @@ static NSString * const CellIdentifier = @"Cell";
         self.locationManager = [[CLLocationManager alloc] init];
     }
     self.locationManager.delegate = self;
-    self.locationManager.pausesLocationUpdatesAutomatically = YES;
-    self.locationManager.desiredAccuracy = kCLLocationAccuracyKilometer;
-    self.locationManager.distanceFilter = 500; // meters
-    if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusNotDetermined) {
-        [self.locationManager requestWhenInUseAuthorization];
-    }
-}
-
-- (void)startLocationUpdates {
-    if (!self.locationManager) return;
-    [self.locationManager startUpdatingLocation];
-}
-
-- (void)stopLocationUpdates {
-    if (!self.locationManager) return;
-    [self.locationManager stopUpdatingLocation];
+    [self.locationManager requestAlwaysAuthorization];
 }
 
 - (IBAction)plusButtonPressed:(id)sender {
