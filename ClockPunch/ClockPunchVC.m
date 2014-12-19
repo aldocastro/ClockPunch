@@ -13,7 +13,8 @@
 
 static NSString * const CellIdentifier = @"Cell";
 static NSString * const kLocationRegionIdentifier = @"Unterföhring";
-#define kRegionCoordinates CLLocationCoordinate2DMake(48.191662, 11.646044)
+#define kRegionCoordinates1 CLLocationCoordinate2DMake(48.190729, 11.652848)    // wk
+#define kRegionCoordinates2 CLLocationCoordinate2DMake(48.133069, 11.607700)    // he
 
 @interface ClockPunch : NSObject
 @property (nonatomic) NSString *place, *clockIn, *clockOut, *date;
@@ -127,7 +128,7 @@ static NSString * const kLocationRegionIdentifier = @"Unterföhring";
         [alertController addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDefault handler:NULL]];
         [self presentViewController:alertController animated:YES completion:NULL];
     } else {
-        CLCircularRegion *region = [[CLCircularRegion alloc] initWithCenter:kRegionCoordinates
+        CLCircularRegion *region = [[CLCircularRegion alloc] initWithCenter:kRegionCoordinates2
                                                                      radius:500
                                                                  identifier:kLocationRegionIdentifier];
         region.notifyOnEntry = YES;
@@ -149,11 +150,13 @@ static NSString * const kLocationRegionIdentifier = @"Unterföhring";
 - (void)locationManager:(CLLocationManager *)manager didEnterRegion:(CLRegion *)region {
     NSLog(@"%s", __PRETTY_FUNCTION__);
     [self insertGeocodedLocation:manager.location];
+    [self showLocalNotificationWithMessage:@"You are just arriving!"];
 }
 
 - (void)locationManager:(CLLocationManager *)manager didExitRegion:(CLRegion *)region {
     NSLog(@"%s", __PRETTY_FUNCTION__);
     [self insertCheckoutAtObject:self.clockPunches[0]];
+    [self showLocalNotificationWithMessage:@"You are leaving now."];
 }
 
 #pragma mark - Helpers
@@ -212,6 +215,16 @@ static NSString * const kLocationRegionIdentifier = @"Unterföhring";
 
 - (IBAction)plusButtonPressed:(id)sender {
     [self updateViewWithLocation:self.locationManager.location];
+}
+
+- (void)showLocalNotificationWithMessage:(NSString *)message {
+    UILocalNotification *notification = [[UILocalNotification alloc] init];
+    notification.fireDate = [NSDate date];
+    notification.timeZone = [NSTimeZone defaultTimeZone];
+    notification.alertBody = message;
+    notification.alertAction = @"Ok";
+    notification.soundName = UILocalNotificationDefaultSoundName;
+    [[UIApplication sharedApplication] scheduleLocalNotification:notification];
 }
 
 @end
