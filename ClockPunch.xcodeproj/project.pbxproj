@@ -9,6 +9,12 @@
 /* Begin PBXBuildFile section */
 		6E30C8811A4220B0004EB456 /* NSDate+Formatted.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E30C8801A4220B0004EB456 /* NSDate+Formatted.m */; };
 		6E30C8821A4220B0004EB456 /* NSDate+Formatted.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E30C8801A4220B0004EB456 /* NSDate+Formatted.m */; };
+		6E30C8841A43ED8E004EB456 /* Address1.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 6E30C8831A43ED8E004EB456 /* Address1.gpx */; };
+		6E30C8851A43ED8E004EB456 /* Address1.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 6E30C8831A43ED8E004EB456 /* Address1.gpx */; };
+		6E30C8871A43EEDD004EB456 /* Address2.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 6E30C8861A43EEDD004EB456 /* Address2.gpx */; };
+		6E30C8881A43EEDD004EB456 /* Address2.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 6E30C8861A43EEDD004EB456 /* Address2.gpx */; };
+		6E30C88B1A43F385004EB456 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E30C88A1A43F385004EB456 /* Crashlytics.framework */; };
+		6E30C88C1A43F385004EB456 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E30C88A1A43F385004EB456 /* Crashlytics.framework */; };
 		6E5BDA531A37BE1800421C31 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E5BDA521A37BE1800421C31 /* main.m */; };
 		6E5BDA561A37BE1800421C31 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E5BDA551A37BE1800421C31 /* AppDelegate.m */; };
 		6E5BDA591A37BE1800421C31 /* ClockPunchVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E5BDA581A37BE1800421C31 /* ClockPunchVC.m */; };
@@ -32,6 +38,9 @@
 /* Begin PBXFileReference section */
 		6E30C87F1A4220B0004EB456 /* NSDate+Formatted.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Formatted.h"; sourceTree = "<group>"; };
 		6E30C8801A4220B0004EB456 /* NSDate+Formatted.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Formatted.m"; sourceTree = "<group>"; };
+		6E30C8831A43ED8E004EB456 /* Address1.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = Address1.gpx; path = ../../../../../Downloads/Address1.gpx; sourceTree = "<group>"; };
+		6E30C8861A43EEDD004EB456 /* Address2.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = Address2.gpx; path = ../../../../../Downloads/Address2.gpx; sourceTree = "<group>"; };
+		6E30C88A1A43F385004EB456 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = SOURCE_ROOT; };
 		6E5BDA4D1A37BE1800421C31 /* ClockPunch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ClockPunch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6E5BDA511A37BE1800421C31 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6E5BDA521A37BE1800421C31 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -53,6 +62,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6E30C88B1A43F385004EB456 /* Crashlytics.framework in Frameworks */,
 				6E5BDA7A1A37BE3900421C31 /* CoreLocation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -61,6 +71,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6E30C88C1A43F385004EB456 /* Crashlytics.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -71,6 +82,7 @@
 			isa = PBXGroup;
 			children = (
 				6E5BDA4F1A37BE1800421C31 /* ClockPunch */,
+				6E30C88A1A43F385004EB456 /* Crashlytics.framework */,
 				6E5BDA791A37BE3900421C31 /* CoreLocation.framework */,
 				6E5BDA6C1A37BE1800421C31 /* ClockPunchTests */,
 				6E5BDA4E1A37BE1800421C31 /* Products */,
@@ -106,6 +118,8 @@
 		6E5BDA501A37BE1800421C31 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				6E30C8831A43ED8E004EB456 /* Address1.gpx */,
+				6E30C8861A43EEDD004EB456 /* Address2.gpx */,
 				6E5BDA511A37BE1800421C31 /* Info.plist */,
 				6E5BDA521A37BE1800421C31 /* main.m */,
 			);
@@ -139,6 +153,7 @@
 				6E5BDA491A37BE1800421C31 /* Sources */,
 				6E5BDA4A1A37BE1800421C31 /* Frameworks */,
 				6E5BDA4B1A37BE1800421C31 /* Resources */,
+				6E30C8891A43F355004EB456 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -217,6 +232,8 @@
 				6E5BDA5F1A37BE1800421C31 /* Main.storyboard in Resources */,
 				6E5BDA641A37BE1800421C31 /* LaunchScreen.xib in Resources */,
 				6E5BDA611A37BE1800421C31 /* Images.xcassets in Resources */,
+				6E30C8841A43ED8E004EB456 /* Address1.gpx in Resources */,
+				6E30C8871A43EEDD004EB456 /* Address2.gpx in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -224,10 +241,28 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6E30C8851A43ED8E004EB456 /* Address1.gpx in Resources */,
+				6E30C8881A43EEDD004EB456 /* Address2.gpx in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		6E30C8891A43F355004EB456 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./Crashlytics.framework/run ab73dc3c453231c8f2badc031b8e8a6a76247f70 5276528184073c4918813c520908cd3a63c64da148a5b23d0ae7d2da6e1f91e3";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		6E5BDA491A37BE1800421C31 /* Sources */ = {
@@ -361,6 +396,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Aldo Castro (EJ9PY36MU8)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = ClockPunch/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -373,6 +412,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Aldo Castro (EJ9PY36MU8)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = ClockPunch/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -387,6 +430,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
+					"$(PROJECT_DIR)",
 				);
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -406,6 +450,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = ClockPunchTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
