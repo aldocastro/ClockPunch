@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		144FBD361A484FF700A68FC3 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 144FBD341A484FF700A68FC3 /* Model.xcdatamodeld */; };
+		144FBD371A484FF700A68FC3 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 144FBD341A484FF700A68FC3 /* Model.xcdatamodeld */; };
 		6E30C8811A4220B0004EB456 /* NSDate+Formatted.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E30C8801A4220B0004EB456 /* NSDate+Formatted.m */; };
 		6E30C8821A4220B0004EB456 /* NSDate+Formatted.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E30C8801A4220B0004EB456 /* NSDate+Formatted.m */; };
 		6E30C8841A43ED8E004EB456 /* Address1.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 6E30C8831A43ED8E004EB456 /* Address1.gpx */; };
@@ -38,6 +40,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		144FBD351A484FF700A68FC3 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		6E30C87F1A4220B0004EB456 /* NSDate+Formatted.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Formatted.h"; sourceTree = "<group>"; };
 		6E30C8801A4220B0004EB456 /* NSDate+Formatted.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Formatted.m"; sourceTree = "<group>"; };
 		6E30C8831A43ED8E004EB456 /* Address1.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = Address1.gpx; path = ../../../../../Downloads/Address1.gpx; sourceTree = "<group>"; };
@@ -114,6 +117,7 @@
 				6E5BDA601A37BE1800421C31 /* Images.xcassets */,
 				6E5BDA621A37BE1800421C31 /* LaunchScreen.xib */,
 				6E5BDA501A37BE1800421C31 /* Supporting Files */,
+				144FBD341A484FF700A68FC3 /* Model.xcdatamodeld */,
 			);
 			path = ClockPunch;
 			sourceTree = "<group>";
@@ -277,6 +281,7 @@
 			files = (
 				6E30C8811A4220B0004EB456 /* NSDate+Formatted.m in Sources */,
 				6E5BDA561A37BE1800421C31 /* AppDelegate.m in Sources */,
+				144FBD361A484FF700A68FC3 /* Model.xcdatamodeld in Sources */,
 				6E5BDA591A37BE1800421C31 /* ClockPunchVC.m in Sources */,
 				6E5BDA531A37BE1800421C31 /* main.m in Sources */,
 			);
@@ -288,6 +293,7 @@
 			files = (
 				6E5BDA701A37BE1800421C31 /* ClockPunchTests.m in Sources */,
 				6E30C8821A4220B0004EB456 /* NSDate+Formatted.m in Sources */,
+				144FBD371A484FF700A68FC3 /* Model.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -496,6 +502,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		144FBD341A484FF700A68FC3 /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				144FBD351A484FF700A68FC3 /* Model.xcdatamodel */,
+			);
+			currentVersion = 144FBD351A484FF700A68FC3 /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 6E5BDA451A37BE1800421C31 /* Project object */;
 }

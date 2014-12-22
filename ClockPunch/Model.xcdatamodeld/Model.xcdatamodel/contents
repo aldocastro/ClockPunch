@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="6254" systemVersion="14B25" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="ClockPunch" syncable="YES">
+        <attribute name="clockIn" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="clockOut" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="place" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="Entries" syncable="YES">
+        <attribute name="date" optional="YES" attributeType="Date" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="ClockPunch" positionX="1188" positionY="-1231" width="128" height="88"/>
+        <element name="Entries" positionX="990" positionY="-1332" width="128" height="58"/>
+    </elements>
+</model>
