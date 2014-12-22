@@ -1,0 +1,16 @@
+/*
+  Localizable.strings
+  ClockPunch
+
+  Created by Aldo Castro on 22/12/14.
+  Copyright (c) 2014 Aldo Castro. All rights reserved.
+*/
+
+"kArrivingNow" = "You are just arriving!";
+"kLeavingNow" = "You are leaving now.";
+
+//  Activate location services alert
+"kReqstLocServcsAlertTitle" = "Region Monitoring Required";
+"kReqstLocServcsAlertMessage" = "Allow location services in Settings.";
+"kReqstLocServcsAlertOkBtn" = "Accept";
+"kReqstLocServcsAlertCancelBtn" = "Cancel";

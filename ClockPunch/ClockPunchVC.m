@@ -119,13 +119,13 @@ static NSString * const kLocationRegionIdentifier = @"Unterföhring";
 - (void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status {
     if (status == kCLAuthorizationStatusDenied) {
         //  open settings
-        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Region Monitoring Required"
-                                                                                 message:@"Allow location services in Settings."
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"kReqstLocServcsAlertTitle", nil)
+                                                                                 message:NSLocalizedString(@"kReqstLocServcsAlertMessage", nil)
                                                                           preferredStyle:UIAlertControllerStyleAlert];
-        [alertController addAction:[UIAlertAction actionWithTitle:@"Accept" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        [alertController addAction:[UIAlertAction actionWithTitle:NSLocalizedString(@"kReqstLocServcsAlertOkBtn", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
             [[UIApplication sharedApplication] openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString]];
         }]];
-        [alertController addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDefault handler:NULL]];
+        [alertController addAction:[UIAlertAction actionWithTitle:NSLocalizedString(@"kReqstLocServcsAlertCancelBtn", nil) style:UIAlertActionStyleDefault handler:NULL]];
         [self presentViewController:alertController animated:YES completion:NULL];
     } else {
         CLCircularRegion *region = [[CLCircularRegion alloc] initWithCenter:kRegionCoordinates2
@@ -150,13 +150,13 @@ static NSString * const kLocationRegionIdentifier = @"Unterföhring";
 - (void)locationManager:(CLLocationManager *)manager didEnterRegion:(CLRegion *)region {
     NSLog(@"%s", __PRETTY_FUNCTION__);
     [self insertGeocodedLocation:manager.location];
-    [self showLocalNotificationWithMessage:@"You are just arriving!"];
+    [self showLocalNotificationWithMessage:NSLocalizedString(@"kArrivingNow", nil)];
 }
 
 - (void)locationManager:(CLLocationManager *)manager didExitRegion:(CLRegion *)region {
     NSLog(@"%s", __PRETTY_FUNCTION__);
     [self insertCheckoutAtObject:self.clockPunches[0]];
-    [self showLocalNotificationWithMessage:@"You are leaving now."];
+    [self showLocalNotificationWithMessage:NSLocalizedString(@"kLeavingNow", nil)];
 }
 
 #pragma mark - Helpers

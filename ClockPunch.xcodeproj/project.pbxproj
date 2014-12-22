@@ -23,6 +23,8 @@
 		6E5BDA641A37BE1800421C31 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6E5BDA621A37BE1800421C31 /* LaunchScreen.xib */; };
 		6E5BDA701A37BE1800421C31 /* ClockPunchTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E5BDA6F1A37BE1800421C31 /* ClockPunchTests.m */; };
 		6E5BDA7A1A37BE3900421C31 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E5BDA791A37BE3900421C31 /* CoreLocation.framework */; };
+		FE49107613F5AC82FE279026 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = FE49111B27ECA0B5AE554B56 /* Localizable.strings */; };
+		FE491D9BB1992307624A2E1D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = FE49111B27ECA0B5AE554B56 /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +57,7 @@
 		6E5BDA6E1A37BE1800421C31 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6E5BDA6F1A37BE1800421C31 /* ClockPunchTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ClockPunchTests.m; sourceTree = "<group>"; };
 		6E5BDA791A37BE3900421C31 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		FE49111B27ECA0B5AE554B56 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +121,7 @@
 		6E5BDA501A37BE1800421C31 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				FE49111B27ECA0B5AE554B56 /* Localizable.strings */,
 				6E30C8831A43ED8E004EB456 /* Address1.gpx */,
 				6E30C8861A43EEDD004EB456 /* Address2.gpx */,
 				6E5BDA511A37BE1800421C31 /* Info.plist */,
@@ -234,6 +238,7 @@
 				6E5BDA611A37BE1800421C31 /* Images.xcassets in Resources */,
 				6E30C8841A43ED8E004EB456 /* Address1.gpx in Resources */,
 				6E30C8871A43EEDD004EB456 /* Address2.gpx in Resources */,
+				FE49107613F5AC82FE279026 /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -243,6 +248,7 @@
 			files = (
 				6E30C8851A43ED8E004EB456 /* Address1.gpx in Resources */,
 				6E30C8881A43EEDD004EB456 /* Address2.gpx in Resources */,
+				FE491D9BB1992307624A2E1D /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
