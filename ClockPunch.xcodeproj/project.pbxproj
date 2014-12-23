@@ -9,12 +9,12 @@
 /* Begin PBXBuildFile section */
 		144FBD361A484FF700A68FC3 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 144FBD341A484FF700A68FC3 /* Model.xcdatamodeld */; };
 		144FBD371A484FF700A68FC3 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 144FBD341A484FF700A68FC3 /* Model.xcdatamodeld */; };
+		14D4F9B51A495DD1008BED22 /* Address1.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 14D4F9B31A495DD1008BED22 /* Address1.gpx */; };
+		14D4F9B61A495DD1008BED22 /* Address1.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 14D4F9B31A495DD1008BED22 /* Address1.gpx */; };
+		14D4F9B71A495DD1008BED22 /* Address2.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 14D4F9B41A495DD1008BED22 /* Address2.gpx */; };
+		14D4F9B81A495DD1008BED22 /* Address2.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 14D4F9B41A495DD1008BED22 /* Address2.gpx */; };
 		6E30C8811A4220B0004EB456 /* NSDate+Formatted.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E30C8801A4220B0004EB456 /* NSDate+Formatted.m */; };
 		6E30C8821A4220B0004EB456 /* NSDate+Formatted.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E30C8801A4220B0004EB456 /* NSDate+Formatted.m */; };
-		6E30C8841A43ED8E004EB456 /* Address1.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 6E30C8831A43ED8E004EB456 /* Address1.gpx */; };
-		6E30C8851A43ED8E004EB456 /* Address1.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 6E30C8831A43ED8E004EB456 /* Address1.gpx */; };
-		6E30C8871A43EEDD004EB456 /* Address2.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 6E30C8861A43EEDD004EB456 /* Address2.gpx */; };
-		6E30C8881A43EEDD004EB456 /* Address2.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 6E30C8861A43EEDD004EB456 /* Address2.gpx */; };
 		6E30C88B1A43F385004EB456 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E30C88A1A43F385004EB456 /* Crashlytics.framework */; };
 		6E30C88C1A43F385004EB456 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E30C88A1A43F385004EB456 /* Crashlytics.framework */; };
 		6E5BDA531A37BE1800421C31 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E5BDA521A37BE1800421C31 /* main.m */; };
@@ -41,10 +41,10 @@
 
 /* Begin PBXFileReference section */
 		144FBD351A484FF700A68FC3 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		14D4F9B31A495DD1008BED22 /* Address1.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Address1.gpx; sourceTree = "<group>"; };
+		14D4F9B41A495DD1008BED22 /* Address2.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Address2.gpx; sourceTree = "<group>"; };
 		6E30C87F1A4220B0004EB456 /* NSDate+Formatted.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Formatted.h"; sourceTree = "<group>"; };
 		6E30C8801A4220B0004EB456 /* NSDate+Formatted.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Formatted.m"; sourceTree = "<group>"; };
-		6E30C8831A43ED8E004EB456 /* Address1.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = Address1.gpx; path = ../../../../../Downloads/Address1.gpx; sourceTree = "<group>"; };
-		6E30C8861A43EEDD004EB456 /* Address2.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = Address2.gpx; path = ../../../../../Downloads/Address2.gpx; sourceTree = "<group>"; };
 		6E30C88A1A43F385004EB456 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = SOURCE_ROOT; };
 		6E5BDA4D1A37BE1800421C31 /* ClockPunch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ClockPunch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6E5BDA511A37BE1800421C31 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -125,9 +125,9 @@
 		6E5BDA501A37BE1800421C31 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				14D4F9B31A495DD1008BED22 /* Address1.gpx */,
+				14D4F9B41A495DD1008BED22 /* Address2.gpx */,
 				FE49111B27ECA0B5AE554B56 /* Localizable.strings */,
-				6E30C8831A43ED8E004EB456 /* Address1.gpx */,
-				6E30C8861A43EEDD004EB456 /* Address2.gpx */,
 				6E5BDA511A37BE1800421C31 /* Info.plist */,
 				6E5BDA521A37BE1800421C31 /* main.m */,
 			);
@@ -238,10 +238,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				6E5BDA5F1A37BE1800421C31 /* Main.storyboard in Resources */,
+				14D4F9B71A495DD1008BED22 /* Address2.gpx in Resources */,
 				6E5BDA641A37BE1800421C31 /* LaunchScreen.xib in Resources */,
 				6E5BDA611A37BE1800421C31 /* Images.xcassets in Resources */,
-				6E30C8841A43ED8E004EB456 /* Address1.gpx in Resources */,
-				6E30C8871A43EEDD004EB456 /* Address2.gpx in Resources */,
+				14D4F9B51A495DD1008BED22 /* Address1.gpx in Resources */,
 				FE49107613F5AC82FE279026 /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -250,8 +250,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6E30C8851A43ED8E004EB456 /* Address1.gpx in Resources */,
-				6E30C8881A43EEDD004EB456 /* Address2.gpx in Resources */,
+				14D4F9B61A495DD1008BED22 /* Address1.gpx in Resources */,
+				14D4F9B81A495DD1008BED22 /* Address2.gpx in Resources */,
 				FE491D9BB1992307624A2E1D /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
