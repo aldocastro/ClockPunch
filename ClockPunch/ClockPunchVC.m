@@ -8,36 +8,13 @@
 
 #import "ClockPunchVC.h"
 #import "NSDate+Formatted.h"
+#import "Punch.h"
 
 @import AddressBookUI;
 
 static NSString * const CellIdentifier = @"Cell";
 static NSString * const kLocationRegionIdentifier = @"Unterföhring";
-#define kRegionCoordinates1 CLLocationCoordinate2DMake(48.190729, 11.652848)    // wk
-#define kRegionCoordinates2 CLLocationCoordinate2DMake(48.133069, 11.607700)    // he
-
-@interface ClockPunch : NSObject
-@property (nonatomic) NSString *place, *clockIn, *clockOut, *date;
-+ (ClockPunch *)clockWithPlaceAddress:(NSString *)address andTimestamp:(NSString *)timestamp;
-- (BOOL)shouldInsertClockOut;
-@end
-
-@implementation ClockPunch
-+ (ClockPunch *)clockWithPlaceAddress:(NSString *)address andTimestamp:(NSString *)timestamp {
-    ClockPunch *clockPunch = [ClockPunch new];
-    clockPunch.place = address;
-    clockPunch.clockIn = timestamp;
-    clockPunch.clockOut = @"";
-    clockPunch.date = [NSDate formattedTimestamp:[NSDate date] withFormatString:kDateFormattedString];
-    return clockPunch;
-}
-- (BOOL)shouldInsertClockOut {
-    return (self.clockIn && self.clockIn.length>0 && [self.clockOut isEqualToString:@""]);
-}
-- (NSString *)description {
-    return [NSString stringWithFormat:@"Place: %@\nClock In: %@\nClock Out: %@",self.place,self.clockIn,self.clockOut];
-}
-@end
+#define kRegionCoordinates CLLocationCoordinate2DMake(48.190729, 11.652848)    // wk
 
 @implementation ClockPunchCell @end
 
@@ -46,6 +23,7 @@ static NSString * const kLocationRegionIdentifier = @"Unterföhring";
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self requestLocationPermissions];
+    [self fetchData];
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     // Do any additional setup after loading the view, typically from a nib.
@@ -82,15 +60,17 @@ static NSString * const kLocationRegionIdentifier = @"Unterföhring";
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     ClockPunchCell *cell = (ClockPunchCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-    ClockPunch *clockPunch = self.clockPunches[indexPath.row];
+    Punch *clockPunch = self.clockPunches[indexPath.row];
     cell.placeName.text = clockPunch.place;
-    cell.clockIn.text = clockPunch.clockIn;
-    cell.clockOut.text = clockPunch.clockOut;
+    cell.clockIn.text = [NSDate formattedTimestamp:clockPunch.clockIn withFormatString:kHourFormattedString];
+    cell.clockOut.text = [NSDate formattedTimestamp:clockPunch.clockOut withFormatString:kHourFormattedString];
     return cell;
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    return ((ClockPunch *)self.clockPunches[0]).date;
+    Punch *_clockPunch = (Punch *)[self.clockPunches firstObject];
+    NSString *headerTitle = [NSDate formattedTimestamp:_clockPunch.date withFormatString:kDateFormattedString];
+    return headerTitle;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -104,11 +84,12 @@ static NSString * const kLocationRegionIdentifier = @"Unterföhring";
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        [self.clockPunches removeObjectAtIndex:indexPath.row];
-        [tableView beginUpdates];
-        [tableView deleteSections:[NSIndexSet indexSetWithIndex:indexPath.section] withRowAnimation:UITableViewRowAnimationLeft];
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationLeft];
-        [tableView endUpdates];
+        if ([self deleteClockPunchAtIndex:indexPath.row]) {
+            [tableView beginUpdates];
+            [tableView deleteSections:[NSIndexSet indexSetWithIndex:indexPath.section] withRowAnimation:UITableViewRowAnimationLeft];
+            [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationLeft];
+            [tableView endUpdates];
+        }
     } else if (editingStyle == UITableViewCellEditingStyleInsert) {
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
     }
@@ -128,7 +109,7 @@ static NSString * const kLocationRegionIdentifier = @"Unterföhring";
         [alertController addAction:[UIAlertAction actionWithTitle:NSLocalizedString(@"kReqstLocServcsAlertCancelBtn", nil) style:UIAlertActionStyleDefault handler:NULL]];
         [self presentViewController:alertController animated:YES completion:NULL];
     } else {
-        CLCircularRegion *region = [[CLCircularRegion alloc] initWithCenter:kRegionCoordinates2
+        CLCircularRegion *region = [[CLCircularRegion alloc] initWithCenter:kRegionCoordinates
                                                                      radius:500
                                                                  identifier:kLocationRegionIdentifier];
         region.notifyOnEntry = YES;
@@ -162,10 +143,24 @@ static NSString * const kLocationRegionIdentifier = @"Unterföhring";
 #pragma mark - Helpers
 
 - (void)updateViewWithLocation:(CLLocation *)location {
-    if ([((ClockPunch *)self.clockPunches[0]) shouldInsertClockOut]) {
+    Punch *_clockPunch = (Punch *)[self.clockPunches firstObject];
+    if (_clockPunch && [_clockPunch shouldCheckout]) {
         [self insertCheckoutAtObject:self.clockPunches[0]];
     } else {
         [self insertGeocodedLocation:location];
+    }
+}
+
+- (void)fetchData {
+    if (!self.clockPunches) {
+        self.clockPunches = [[NSMutableArray alloc] init];
+    }
+    NSFetchRequest *request = [[NSFetchRequest alloc] initWithEntityName:@"Punch"];
+    request.predicate = [NSPredicate predicateWithFormat:@"place != nil"];
+    NSError *error = nil;
+    NSArray *results = [self.managedObject executeFetchRequest:request error:&error];
+    if (results && results.count > 0) {
+        self.clockPunches = [NSMutableArray arrayWithArray:results];
     }
 }
 
@@ -173,20 +168,36 @@ static NSString * const kLocationRegionIdentifier = @"Unterföhring";
     if (!self.clockPunches) {
         self.clockPunches = [[NSMutableArray alloc] init];
     }
-    NSString *timestamp = [NSDate formattedTimestamp:[NSDate date] withFormatString:kHourFormattedString];
-    ClockPunch *clockPunch = [ClockPunch clockWithPlaceAddress:address andTimestamp:timestamp];
-    [self.clockPunches insertObject:clockPunch atIndex:0];
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
-    [self.tableView beginUpdates];
-    [self.tableView insertSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationTop];
-    [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationTop];
-    [self.tableView endUpdates];
+    NSDate *nowDate = [NSDate date];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Punch" inManagedObjectContext:self.managedObject];
+    Punch *_clockPunch = [[Punch alloc] initWithEntity:entity insertIntoManagedObjectContext:self.managedObject];
+    _clockPunch.place = address;
+    _clockPunch.clockIn = nowDate;
+    _clockPunch.clockOut = nil;
+    _clockPunch.date = nowDate;
+    
+    NSError *error = nil;
+    if (![self.managedObject save:&error]) {
+        NSLog(@"Error: %@, %@", error, error.userInfo);
+    } else {
+        [self.clockPunches insertObject:_clockPunch atIndex:0];
+        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+        [self.tableView beginUpdates];
+        [self.tableView insertSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationTop];
+        [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationTop];
+        [self.tableView endUpdates];
+    }
 }
 
-- (void)insertCheckoutAtObject:(ClockPunch *)object {
-    object.clockOut = [NSDate formattedTimestamp:[NSDate date] withFormatString:kHourFormattedString];
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
-    [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
+- (void)insertCheckoutAtObject:(Punch *)_clockPunch {
+    _clockPunch.clockOut = [NSDate date];
+    NSError *error = nil;
+    if (![self.managedObject save:&error]) {
+        NSLog(@"Error: %@, %@", error, error.userInfo);
+    } else {
+        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+        [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
+    }
 }
 
 - (void)insertGeocodedLocation:(CLLocation *)location {
@@ -202,6 +213,20 @@ static NSString * const kLocationRegionIdentifier = @"Unterföhring";
             }
         }];
     }
+}
+
+- (BOOL)deleteClockPunchAtIndex:(NSUInteger)index {
+    BOOL deleteSucceed = NO;
+    Punch *_clockPunch = (Punch *)self.clockPunches[index];
+    [self.managedObject deleteObject:_clockPunch];
+    NSError *error = nil;
+    if (![self.managedObject save:&error]) {
+        NSLog(@"Error: %@, %@", error, error.userInfo);
+    } else {
+        deleteSucceed = YES;
+        [self.clockPunches removeObjectAtIndex:index];
+    }
+    return deleteSucceed;
 }
 
 - (void)requestLocationPermissions {
