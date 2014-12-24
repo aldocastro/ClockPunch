@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import <Crashlytics/Crashlytics.h>
+#import "ClockPunchVC.h"
 
 @interface AppDelegate ()
 
@@ -19,6 +20,10 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     [[UILabel appearanceWhenContainedIn:[UITableViewHeaderFooterView class], nil] setFont:[UIFont fontWithName:@"Helvetica Neue" size:17]];
+    
+    UINavigationController *navigationVC = (UINavigationController *)self.window.rootViewController;
+    ClockPunchVC *clockPunchVC = (ClockPunchVC *)navigationVC.viewControllers[0];
+    clockPunchVC.managedObject = self.managedObjectContext;
     
     [Crashlytics startWithAPIKey:@"ab73dc3c453231c8f2badc031b8e8a6a76247f70"];
     return YES;

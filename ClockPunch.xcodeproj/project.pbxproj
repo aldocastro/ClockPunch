@@ -46,6 +46,7 @@
 		144FBD351A484FF700A68FC3 /* Clock_Punch.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Clock_Punch.xcdatamodel; sourceTree = "<group>"; };
 		14D4F9B31A495DD1008BED22 /* Address1.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Address1.gpx; sourceTree = "<group>"; };
 		14D4F9B41A495DD1008BED22 /* Address2.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Address2.gpx; sourceTree = "<group>"; };
+		14D4FA2A1A4ACBB9008BED22 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		14D4FA381A4AD9EA008BED22 /* Punch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Punch.h; sourceTree = "<group>"; };
 		14D4FA391A4AD9EA008BED22 /* Punch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Punch.m; sourceTree = "<group>"; };
 		6E30C87F1A4220B0004EB456 /* NSDate+Formatted.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Formatted.h"; sourceTree = "<group>"; };
@@ -73,6 +74,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				14D4FA2B1A4ACBB9008BED22 /* CoreData.framework in Frameworks */,
 				6E30C88B1A43F385004EB456 /* Crashlytics.framework in Frameworks */,
 				6E5BDA7A1A37BE3900421C31 /* CoreLocation.framework in Frameworks */,
 			);
@@ -93,6 +95,7 @@
 			isa = PBXGroup;
 			children = (
 				6E5BDA4F1A37BE1800421C31 /* ClockPunch */,
+				14D4FA2A1A4ACBB9008BED22 /* CoreData.framework */,
 				6E30C88A1A43F385004EB456 /* Crashlytics.framework */,
 				6E5BDA791A37BE3900421C31 /* CoreLocation.framework */,
 				6E5BDA6C1A37BE1800421C31 /* ClockPunchTests */,
